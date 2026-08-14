@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: sotilma-api
+    env: python
+    runtime: python3.12
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -k gevent --workers 2 --worker-connections 200 main:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DATABASE_URL
+        value: $DATABASE_URL
+      - key: FLASK_ENV
+        value: production
+      - key: JWT_SECRET_KEY
+        value: $JWT_SECRET_KEY
+      - key: JWT_ALGORITHM
+        value: $JWT_ALGORITHM
+      - key: JWT_ALGORITHM_HPW
+        value: $JWT_ALGORITHM_HPW
+      - key: JWT_EXP_DELTA_SECONDS
+        value: $JWT_EXP_DELTA_SECONDS
+      - key: FLASK_DEBUG
+        value: $FLASK_DEBUG
