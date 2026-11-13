@@ -16,3 +16,6 @@ __pycache__/
 # Fichiers système
 .DS_Store
 Thumbs.db
+venv/
+chatbot.log
+.env
